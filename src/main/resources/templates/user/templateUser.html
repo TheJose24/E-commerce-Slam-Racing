@@ -1,0 +1,190 @@
+<div th:fragment="header"
+     th:classappend="${fixedHeader} ? 'fixed z-10' : ''"
+     class="bg-black shadow px-20 w-screen">
+    <div class="text-white flex justify-between h-16 items-center">
+        <button
+                class="rounded p-1 -ml-1 transition-colors focus:ring-2 focus:ring-white hover:bg-white hover:text-black">
+            <svg
+                    class="h-7 w-7"
+                    data-slot="icon"
+                    fill="none"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+            >
+                <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                ></path>
+            </svg>
+        </button>
+        <a
+                class="flex items-center justify-between w-52 text-base text-white absolute m-auto left-0 right-0"
+                th:href="@{/}"
+        >
+            <p class="font-ethno">Slam</p>
+            <svg
+                    class="h-8 w-8"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 298.000000 247.000000"
+                    preserveAspectRatio="xMidYMid meet"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    stroke-width="10px"
+            >
+                <g
+                        transform="translate(0.000000,247.000000) scale(0.100000,-0.100000)"
+                >
+                    <path
+                            d="M849 2129 c-134 -161 -373 -446 -531 -635 -159 -189 -288 -348 -288
+                                    -354 0 -6 108 -145 240 -310 l240 -300 393 0 393 0 348 411 c310 367 346 413
+                                    333 427 -44 53 -369 412 -373 412 -6 0 -46 -44 -498 -560 -104 -118 -192 -219
+                                    -196 -223 -4 -4 -37 26 -74 67 l-68 76 355 444 355 444 -185 196 c-102 108
+                                    -189 196 -193 196 -4 0 -117 -131 -251 -291z m498 -107 c-1 -7 -143 -190 -316
+                                    -407 l-315 -395 -254 0 c-242 0 -254 1 -240 18 15 18 256 306 653 781 l229
+                                    275 123 -130 c67 -71 122 -135 120 -142z m392 -522 c72 -78 131 -144 130 -148
+                                    0 -4 -141 -173 -312 -377 l-312 -370 -273 -3 c-149 -1 -272 0 -272 3 0 10 892
+                                    1035 900 1035 4 0 67 -63 139 -140z"
+                    />
+                    <path
+                            d="M1681 1863 c8 -10 127 -139 264 -286 138 -148 251 -272 253 -276 1
+                                    -4 -111 -138 -249 -297 -139 -159 -304 -349 -367 -421 l-115 -133 -339 0 -338
+                                    0 157 -210 158 -210 396 0 396 0 525 622 c288 343 528 629 532 636 10 17 -2
+                                    31 -290 328 l-257 264 -369 0 c-351 0 -370 -1 -357 -17z m1088 -660 c-8 -10
+                                    -140 -166 -294 -348 -154 -182 -361 -426 -460 -543 l-179 -212 -274 0 -273 0
+                                    23 29 c13 16 230 268 483 560 l460 531 264 0 c248 0 263 -1 250 -17z"
+                    />
+                </g>
+            </svg>
+            <p class="font-ethno">Racing</p>
+        </a>
+        <div class="text-white flex justify-center items-center">
+
+            <button class="h-7 w-7">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M17.5 17.5L22 22" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C15.9706 20 20 15.9706 20 11Z"
+                          stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            <button class="h-7 w-7 ml-8"
+                id="btn-abrirCarrito">
+                <svg
+                        data-slot="icon"
+                        fill="none"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                >
+                    <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+                    ></path>
+                </svg>
+            </button>
+
+            <button class="h-7 w-7 ml-8">
+                <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.779894 33.25H0.773895C0.96566 30.1731 2.31227 26.321 4.8366 23.1527C7.55441 19.7417 11.6015 17.1638 17 17.1638C22.9689 17.1638 27.0059 19.8735 29.5731 23.3268C31.9502 26.5244 33.0618 30.358 33.2279 33.25H33.2201H33.2044H33.1885H33.1724H33.1562H33.1399H33.1234H33.1068H33.09H33.0731H33.056H33.0388H33.0214H33.0039H32.9862H32.9684H32.9505H32.9324H32.9142H32.8958H32.8772H32.8586H32.8398H32.8208H32.8017H32.7825H32.7631H32.7436H32.7239H32.7041H32.6841H32.664H32.6438H32.6234H32.6029H32.5823H32.5615H32.5405H32.5195H32.4983H32.4769H32.4554H32.4338H32.412H32.3901H32.3681H32.3459H32.3236H32.3011H32.2786H32.2558H32.233H32.21H32.1869H32.1636H32.1402H32.1167H32.093H32.0692H32.0452H32.0212H31.997H31.9726H31.9482H31.9236H31.8988H31.874H31.849H31.8238H31.7986H31.7732H31.7477H31.722H31.6962H31.6703H31.6443H31.6181H31.5918H31.5654H31.5388H31.5121H31.4853H31.4584H31.4313H31.4041H31.3768H31.3493H31.3218H31.2941H31.2662H31.2383H31.2102H31.182H31.1537H31.1252H31.0966H31.0679H31.0391H31.0102H30.9811H30.9519H30.9226H30.8931H30.8636H30.8339H30.8041H30.7741H30.7441H30.7139H30.6836H30.6532H30.6227H30.592H30.5612H30.5303H30.4993H30.4682H30.437H30.4056H30.3741H30.3425H30.3108H30.2789H30.247H30.2149H30.1827H30.1504H30.118H30.0855H30.0528H30.02H29.9871H29.9541H29.921H29.8878H29.8545H29.821H29.7874H29.7538H29.72H29.6861H29.652H29.6179H29.5837H29.5493H29.5148H29.4803H29.4456H29.4108H29.3759H29.3409H29.3057H29.2705H29.2351H29.1997H29.1641H29.1284H29.0927H29.0568H29.0208H28.9847H28.9485H28.9121H28.8757H28.8392H28.8025H28.7658H28.7289H28.692H28.6549H28.6178H28.5805H28.5431H28.5056H28.4681H28.4304H28.3926H28.3547H28.3167H28.2786H28.2404H28.2021H28.1637H28.1252H28.0866H28.0479H28.0091H27.9702H27.9312H27.892H27.8528H27.8135H27.7741H27.7346H27.695H27.6553H27.6155H27.5756H27.5356H27.4955H27.4553H27.4151H27.3747H27.3342H27.2936H27.2529H27.2122H27.1713H27.1304H27.0893H27.0482H27.0069H26.9656H26.9242H26.8826H26.841H26.7993H26.7575H26.7156H26.6737H26.6316H26.5894H26.5472H26.5048H26.4624H26.4198H26.3772H26.3345H26.2917H26.2488H26.2058H26.1628H26.1196H26.0764H26.033H25.9896H25.9461H25.9025H25.8588H25.8151H25.7712H25.7273H25.6832H25.6391H25.5949H25.5506H25.5063H25.4618H25.4173H25.3727H25.3279H25.2832H25.2383H25.1933H25.1483H25.1032H25.058H25.0127H24.9673H24.9218H24.8763H24.8307H24.785H24.7392H24.6934H24.6474H24.6014H24.5553H24.5091H24.4629H24.4166H24.3702H24.3237H24.2771H24.2304H24.1837H24.1369H24.0901H24.0431H23.9961H23.949H23.9018H23.8545H23.8072H23.7598H23.7123H23.6647H23.6171H23.5694H23.5216H23.4738H23.4259H23.3779H23.3298H23.2816H23.2334H23.1851H23.1368H23.0883H23.0398H22.9913H22.9426H22.8939H22.8451H22.7963H22.7473H22.6983H22.6493H22.6002H22.551H22.5017H22.4523H22.4029H22.3535H22.3039H22.2543H22.2047H22.1549H22.1051H22.0552H22.0053H21.9553H21.9052H21.8551H21.8049H21.7546H21.7043H21.6539H21.6035H21.5529H21.5024H21.4517H21.401H21.3502H21.2994H21.2485H21.1976H21.1466H21.0955H21.0443H20.9931H20.9419H20.8906H20.8392H20.7878H20.7363H20.6847H20.6331H20.5814H20.5297H20.4779H20.4261H20.3742H20.3222H20.2702H20.2181H20.166H20.1138H20.0615H20.0093H19.9569H19.9045H19.852H19.7995H19.7469H19.6943H19.6416H19.5889H19.5361H19.4833H19.4304H19.3774H19.3245H19.2714H19.2183H19.1652H19.112H19.0587H19.0054H18.952H18.8986H18.8452H18.7917H18.7381H18.6845H18.6309H18.5772H18.5234H18.4696H18.4158H18.3619H18.308H18.254H18.2H18.1459H18.0918H18.0376H17.9834H17.9291H17.8748H17.8205H17.7661H17.7116H17.6571H17.6026H17.548H17.4934H17.4388H17.3841H17.3293H17.2745H17.2197H17.1649H17.1099H17.055H17H16.945H16.8901H16.8351H16.7803H16.7255H16.6707H16.6159H16.5612H16.5066H16.452H16.3974H16.3429H16.2884H16.2339H16.1795H16.1252H16.0709H16.0166H15.9624H15.9082H15.8541H15.8H15.746H15.692H15.6381H15.5842H15.5304H15.4766H15.4228H15.3691H15.3155H15.2619H15.2083H15.1548H15.1014H15.048H14.9946H14.9413H14.8881H14.8348H14.7817H14.7286H14.6756H14.6226H14.5696H14.5167H14.4639H14.4111H14.3584H14.3057H14.2531H14.2005H14.148H14.0955H14.0431H13.9908H13.9385H13.8862H13.834H13.7819H13.7298H13.6778H13.6258H13.5739H13.5221H13.4703H13.4186H13.3669H13.3153H13.2637H13.2122H13.1608H13.1094H13.0581H13.0069H12.9557H12.9045H12.8534H12.8024H12.7515H12.7006H12.6498H12.599H12.5483H12.4976H12.4471H12.3965H12.3461H12.2957H12.2454H12.1951H12.1449H12.0948H12.0447H11.9947H11.9448H11.8949H11.8451H11.7953H11.7457H11.6961H11.6465H11.5971H11.5477H11.4983H11.449H11.3998H11.3507H11.3017H11.2527H11.2037H11.1549H11.1061H11.0574H11.0087H10.9602H10.9117H10.8632H10.8149H10.7666H10.7184H10.6702H10.6221H10.5741H10.5262H10.4784H10.4306H10.3829H10.3353H10.2877H10.2402H10.1928H10.1455H10.0982H10.051H10.0039H9.9569H9.90995H9.86307H9.81627H9.76955H9.72291H9.67634H9.62985H9.58344H9.53711H9.49086H9.44468H9.39859H9.35257H9.30663H9.26078H9.215H9.16931H9.12369H9.07816H9.03271H8.98734H8.94205H8.89685H8.85172H8.80668H8.76172H8.71685H8.67206H8.62735H8.58273H8.53819H8.49373H8.44936H8.40508H8.36088H8.31676H8.27274H8.22879H8.18494H8.14117H8.09749H8.05389H8.01038H7.96696H7.92363H7.88038H7.83723H7.79416H7.75118H7.70829H7.66549H7.62278H7.58016H7.53763H7.49519H7.45284H7.41059H7.36842H7.32635H7.28436H7.24247H7.20067H7.15897H7.11735H7.07583H7.03441H6.99307H6.95183H6.91069H6.86964H6.82868H6.78782H6.74706H6.70639H6.66581H6.62533H6.58495H6.54466H6.50447H6.46438H6.42439H6.38449H6.34469H6.30499H6.26538H6.22588H6.18647H6.14717H6.10796H6.06885H6.02984H5.99094H5.95213H5.91342H5.87482H5.83631H5.79791H5.75961H5.72141H5.68331H5.64531H5.60742H5.56963H5.53195H5.49437H5.45689H5.41951H5.38224H5.34508H5.30802H5.27106H5.23421H5.19747H5.16083H5.1243H5.08787H5.05155H5.01534H4.97923H4.94323H4.90734H4.87156H4.83589H4.80032H4.76486H4.72952H4.69428H4.65915H4.62413H4.58922H4.55442H4.51973H4.48516H4.45069H4.41634H4.38209H4.34796H4.31394H4.28003H4.24624H4.21256H4.17899H4.14554H4.1122H4.07897H4.04586H4.01286H3.97997H3.9472H3.91455H3.88201H3.84959H3.81729H3.7851H3.75302H3.72107H3.68923H3.65751H3.6259H3.59442H3.56305H3.5318H3.50067H3.46965H3.43876H3.40799H3.37733H3.3468H3.31639H3.28609H3.25592H3.22587H3.19594H3.16613H3.13644H3.10688H3.07744H3.04812H3.01892H2.98985H2.9609H2.93207H2.90337H2.87479H2.84633H2.818H2.7898H2.76172H2.73376H2.70593H2.67823H2.65066H2.62321H2.59588H2.56869H2.54162H2.51468H2.48786H2.46118H2.43462H2.40819H2.38189H2.35572H2.32968H2.30377H2.27798H2.25233H2.22681H2.20142H2.17616H2.15103H2.12603H2.10117H2.07643H2.05183H2.02736H2.00303H1.97882H1.95476H1.93082H1.90702H1.88335H1.85981H1.83641H1.81315H1.79002H1.76702H1.74417H1.72144H1.69886H1.67641H1.65409H1.63192H1.60988H1.58797H1.56621H1.54458H1.52309H1.50174H1.48053H1.45946H1.43853H1.41773H1.39708H1.37657H1.35619H1.33596H1.31587H1.29592H1.27611H1.25644H1.23692H1.21753H1.19829H1.17919H1.16024H1.14142H1.12275H1.10423H1.08585H1.06761H1.04952H1.03157H1.01377H0.996108H0.978596H0.96123H0.944009H0.926935H0.910007H0.893226H0.876593H0.860106H0.843768H0.827577H0.811534H0.79564H0.779894Z"
+                          stroke="white" stroke-width="1.5"/>
+                    <path d="M24.75 9.08621C24.75 13.7143 21.1296 17.4224 16.7167 17.4224C12.3038 17.4224 8.68335 13.7143 8.68335 9.08621C8.68335 4.45808 12.3038 0.75 16.7167 0.75C21.1296 0.75 24.75 4.45808 24.75 9.08621Z"
+                          stroke="white" stroke-width="1.5"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+<div th:fragment="modalCarrito"
+     id="contenedor-modal" class="-z-10 opacity-0 fixed w-screen h-screen top-0 bg-black bg-opacity-50
+    transition-opacity duration-1000 font-poppins">
+    <div id="contenedor-carrito"
+         class="absolute bg-white top-0 right-0 w-[45%] h-screen px-7 py-5
+         transition-transform duration-500 translate-x-full">
+        <div class="flex justify-between items-center mb-5">
+            <p class="text-2xl font-bold">Actualizar Carrito</p>
+            <div class="flex gap-x-5">
+                <button id="btn-cerrarCarrito"
+                        class="px-3 py-1.5 bg-white border border-solid border-black rounded-lg text-sm">
+                    Seguir comprando
+                </button>
+
+                <button id="btn-procesoPago" class="px-3 py-1.5 bg-black text-white rounded-lg text-sm">Ir a pagar</button>
+            </div>
+        </div>
+        <div class="w-full border-b border-solid border-grey"></div>
+        <main class="flex flex-col py-9 gap-y-9"
+        id="productosEnCarritoContainer">
+            <!-- iteracion Producto
+            <div th:each="producto : ${productosEnCarrito}"
+
+                 class="flex justify-between w-full items-center px-2 py-1.5 border border-solid
+                 border-black rounded-2xl">
+                <div class="flex items-center gap-x-4">
+                    <img class="object-contain w-[70px] bg-lightGray200 rounded-lg"
+                         th:src="@{/images/{img} (img=${producto.imagenes.get(0).url})}" th:alt="${producto.slug}">
+                    <div class="flex flex-col">
+                        <h2 th:text="${producto.nombre} + ' ' + ${producto.color}" class="text-lg font-semibold"></h2>
+                        <h3 th:text="${producto.material} + ' ™' " class="text-sm"></h3>
+                    </div>
+
+                </div>
+                <div class="inline-flex justify-between w-9">
+                    <span id="cantidad-producto" >1</span>
+                    <div class="flex flex-col gap-y-1">
+                        <button id="btn-aumentar">
+                            <svg width="22" height="8" viewBox="0 0 22 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21.2501 7.82591L11.0527 0.0919189L0.855347 7.82591H21.2501Z" fill="black"/>
+                            </svg>
+                        </button>
+                        <button id="btn-disminuir">
+                            <svg width="22" height="9" viewBox="0 0 22 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21.2501 0.40395L11.0527 8.13794L0.855347 0.40395H21.2501Z" fill="black"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <p th:text="'S/. ' + ${producto.precio_unitario}" class="text-lg font-semibold"></p>
+                    <div class="flex items-center justify-center cursor-pointer">
+                        <svg class="w-3 h-3 mr-1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                            <path d="M19.5 5.5L18.8803 15.5251C18.7219 18.0864 18.6428 19.3671 18.0008 20.2879C17.6833 20.7431 17.2747 21.1273 16.8007 21.416C15.8421 22 14.559 22 11.9927 22C9.42312 22 8.1383 22 7.17905 21.4149C6.7048 21.1257 6.296 20.7408 5.97868 20.2848C5.33688 19.3626 5.25945 18.0801 5.10461 15.5152L4.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                            <path d="M3 5.5H21M16.0557 5.5L15.3731 4.09173C14.9196 3.15626 14.6928 2.68852 14.3017 2.39681C14.215 2.3321 14.1231 2.27454 14.027 2.2247C13.5939 2 13.0741 2 12.0345 2C10.9688 2 10.436 2 9.99568 2.23412C9.8981 2.28601 9.80498 2.3459 9.71729 2.41317C9.32164 2.7167 9.10063 3.20155 8.65861 4.17126L8.05292 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                            <path d="M9.5 16.5L9.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                            <path d="M14.5 16.5L14.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                        </svg>
+                        <p class="text-xs text-red">Eliminar</p>
+                    </div>
+                </div>
+            </div>
+            -->
+        </main>
+
+        <div class="w-full border-b border-solid border-grey"></div>
+
+        <footer>
+            <div class="flex justify-between items-center mt-5">
+                <p class="text-lg font-semibold">Subtotal</p>
+                <span id="subtotal" class="text-lg font-semibold">S/. 0.0</span>
+            </div>
+            <div class="flex justify-between items-center mt-5">
+                <p class="text-lg font-semibold">Envío</p>
+                <span id="envio" class="text-lg font-semibold">S/. 0.0</span>
+            </div>
+            <div class="flex justify-between items-center mt-5">
+                <p class="text-lg font-semibold">Total</p>
+                <span id="total" class="text-lg font-semibold">S/. 0.0</span>
+            </div>
+        </footer>
+    </div>
+</div>

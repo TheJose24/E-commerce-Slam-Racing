@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Panel-Admin</title>
+
+
+    <link icon="icon" href="/imagenes/SlamRacingIcono.ico" rel="icon" />
+
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <link rel="stylesheet" th:href="@{/css/scrollbar.css}" />
+</head>
+<body>
+<main class="inline-flex w-screen">
+    <div th:insert="~{admin/templateAdmin.html::sidebar}" class="w-[17.57%]"></div>
+    <div class="flex flex-col relative w-[calc(100%-17.57%)] h-screen">
+        <header class="w-full h-[13%] flex justify-between items-center px-10 py-5">
+            <div class="h-fit">
+                <h1 class="font-poppins font-bold text-xl">Bienvenido, Usuario</h1>
+                <p class="font-poppins font-medium text-sm text-grey" th:text="${fechaHoraActual}"></p>
+            </div>
+
+
+
+            <form class="flex w-[34.54%] h-fit px-4 py-3 bg-black rounded-lg text-white">
+                <svg class="mr-2"
+                     width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 20C15.9706 20 20 15.9706 20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M18.9299 20.6898C19.4599 22.2898 20.6699 22.4498 21.5999 21.0498C22.4499 19.7698 21.8899 18.7198 20.3499 18.7198C19.2099 18.7098 18.5699 19.5998 18.9299 20.6898Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                <input class="placeholder-white focus:outline-none text-base font-poppins font-medium bg-black w-full" type="text" name="buscar" placeholder="Buscar">
+            </form>
+        </header>
+
+        <div class="flex flex-col items-center justify-between w-full h-full bg-whiteLight">
+
+        </div>
+
+    </div>
+
+
+</main>
+<script th:src="@{/js/admins/home.js}"></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SLAM RACING-productos</title>
+
+    <link icon="icon" href="/imagenes/SlamRacingIcono.ico" rel="icon"/>
+
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/css/scrollbar.css}"/>
+</head>
+<body>
+<!-- incluir el header-->
+<header th:with="fixedHeader=${true}"
+        th:insert="~{user/templateUser.html::header}"
+        class="h-16">
+</header>
+
+<main class="h-auto px-12 py-4 font-poppins">
+
+    <div class="flex text-greyBlue text-sm font-medium mb-4 gap-x-1">
+        <p>Productos /</p>
+        <p class="text-black">Sillas Gamer</p>
+    </div>
+
+    <div class="inline-flex w-full px-5 py-3 gap-12 mb-8 rounded-lg bg-grey text-white font-medium text-sm">
+        <div class="inline-block relative">
+            <button class="flex items-center hover:text-black" onclick="toggleOptions('disponibilidad-options')">
+                Disponibilidad
+                <svg class="ml-1.5"
+                     width="12" height="5" viewBox="0 0 12 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 5L0.803848 0.5H11.1962L6 5Z" fill="currentColor"/>
+                </svg>
+            </button>
+
+            <div id="disponibilidad-options"
+                 class="options-container animate-slide-down hidden flex flex-col absolute z-10 w-max px-3.5 py-1.5 border border-solid border-grey
+                        shadow-[5px_15px_15px_rgba(0,0,0,0.15)] bg-white text-black">
+                <label><input type="checkbox" name="disponibilidad" value="disponible"> Disponible</label>
+                <label><input type="checkbox" name="disponibilidad" value="hacer_pedido"> Pre-Order</label>
+            </div>
+        </div>
+        <div class="inline-block relative">
+            <button class="flex items-center hover:text-black" onclick="toggleOptions('modelo-options')">
+                Modelo
+                <svg class="ml-1.5"
+                     width="12" height="5" viewBox="0 0 12 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 5L0.803848 0.5H11.1962L6 5Z" fill="currentColor"/>
+                </svg>
+            </button>
+
+            <div id="modelo-options"
+                 class="options-container animate-slide-down hidden flex flex-col absolute z-10 w-max px-3.5 py-1.5 border border-solid border-grey
+                        shadow-[5px_15px_15px_rgba(0,0,0,0.15)] bg-white text-black">
+                <label th:each="modelo: ${nombresUnicos}">
+                    <input type="checkbox" name="nombre"
+                           th:text=" ' '+${modelo}"
+                           th:value="${modelo}">
+                </label>
+            </div>
+        </div>
+        <div class="inline-block relative">
+            <button class="flex items-center hover:text-black" onclick="toggleOptions('tapiceria-options')">
+                Tapicería
+                <svg class="ml-1.5"
+                     width="12" height="5" viewBox="0 0 12 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 5L0.803848 0.5H11.1962L6 5Z" fill="currentColor"/>
+                </svg>
+            </button>
+
+            <div id="tapiceria-options"
+                 class="options-container animate-slide-down hidden flex flex-col absolute z-10 w-max px-3.5 py-1.5 border border-solid border-grey
+                        shadow-[5px_15px_15px_rgba(0,0,0,0.15)] bg-white text-black">
+                <label th:each="tapiceria: ${materialesUnicos}">
+                    <input type="checkbox" name="material"
+                           th:text=" ' '+${tapiceria}"
+                           th:value="${tapiceria}">
+                </label>
+            </div>
+        </div>
+        <div class="inline-block relative">
+            <button class="flex items-center hover:text-black" onclick="toggleOptions('color-options')">
+                Color
+                <svg class="ml-1.5"
+                     width="12" height="5" viewBox="0 0 12 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 5L0.803848 0.5H11.1962L6 5Z" fill="currentColor"/>
+                </svg>
+            </button>
+
+            <div id="color-options"
+                 class="options-container animate-slide-down hidden flex flex-col absolute z-10 w-max px-3.5 py-1.5 border border-solid border-grey
+                        shadow-[5px_15px_15px_rgba(0,0,0,0.15)] bg-white text-black">
+                <label th:each="color: ${coloresUnicos}">
+                    <input type="checkbox" name="color"
+                            th:text=" ' '+${color}"
+                           th:value="${color}">
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-wrap gap-[3.09%] justify-start">
+        <div th:each="producto: ${productos}" th:id="'tarjeta-'+${producto.id}"
+             class="tarjeta relative flex flex-col items-center w-[22.67717%] min-w-52 rounded-2xl hover:border hover:border-solid hover:border-grey ">
+
+            <div class="absolute mt-4 flex w-full justify-between">
+                <p th:classappend="${producto.descuento > 0} ? 'opacity-100' : ''"
+                   th:text="${producto.descuento + '% Descuento' }"
+                   class="opacity-0 bg-black px-1.5 py-1 text-white text-xs font-medium"></p>
+                <svg class="mr-3 hover:text-grey text-white cursor-pointer"
+                     id="icono-favorito"
+                     width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M12.5016 22L7.69868 17.1505L2.93351 12.301C0.355498 9.62088 0.355498 5.42611 2.93351 2.74595C4.19585 1.55244 5.90563 0.928735 7.65377 1.02407C9.40191 1.11941 11.0311 1.92521 12.1516 3.24868L12.5016 3.58653L12.8484 3.23413C13.9689 1.91066 15.5981 1.10486 17.3462 1.00952C19.0944 0.914186 20.8042 1.53789 22.0665 2.7314C24.6445 5.41156 24.6445 9.60633 22.0665 12.2865L17.3013 17.136L12.5016 22Z"
+                          fill="currentColor" stroke="#6B6565" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <img class="w-full aspect-square" th:src="@{/images/{img} (img=${producto.imagenes[0].url})}"
+                 th:alt="${producto.nombre}">
+            <div class="w-full px-5">
+                <h3 th:text="${producto.nombre}"
+                    class="text-xs font-light"></h3>
+                <div class="inline-flex w-full items-center justify-between">
+                    <h2 th:text="${producto.color}"
+                        class="text-xl font-light"></h2>
+
+                    <div class="inline-flex">
+                        <span class="flex gap-x-0.5">
+                            <svg th:each="starNum: ${#numbers.sequence(1, 5)}"
+                                 width="16" height="16" viewBox="0 0 16 16" fill="black" xmlns="http://www.w3.org/2000/svg">
+                                <path th:if="${starNum le producto.puntuacionPromedio}"
+                                      d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                      fill="black" stroke="black" stroke-width="1"
+                                />
+                                <path th:unless="${starNum le producto.puntuacionPromedio}"
+                                      d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                      fill="white" stroke="black" stroke-width="1"
+                                />
+                            </svg>
+                        </span>
+
+                        <p th:text="'(' + ${producto.numOpiniones} + ')'" class="ml-1 text-xs text-grey"></p>
+                    </div>
+                </div>
+                <div class="inline-flex items-end gap-2.5 font-medium">
+                    <p th:text="'S/. ' + ${producto.precio_unitario - (producto.precio_unitario * producto.descuento / 100)}"
+                       class="text-red text-xl"></p>
+                    <p>
+                        <s th:if="${producto.descuento > 0}" th:text="${'S/. ' + producto.precio_unitario}"
+                           class="text-grey decoration-black"></s>
+                    </p>
+                </div>
+            </div>
+            <a th:href="@{/productos/{producto} (producto=${producto.slug}) }"
+               class="boton-comprar opacity-0 w-[80%] border border-solid border-black bg-grey text-white text-center my-3 py-1.5 text-sm rounded-lg">
+                Ver más
+            </a>
+        </div>
+    </div>
+
+</main>
+
+<div th:insert="~{user/templateUser.html::modalCarrito}"></div>
+
+<script th:src="@{/js/users/productos.js}"></script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+
+    let productos = /*[[${productosFiltro}]]*/ [];
+
+    // Agregar evento de escucha a los checkboxes para el filtrado
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+        checkbox.addEventListener('change', filtrarProductos);
+    });
+
+    function filtrarProductos() {
+        // Obtener los valores seleccionados de los filtros
+        var disponibilidadSeleccionada = obtenerValoresSeleccionados('disponibilidad');
+        var modeloSeleccionado = obtenerValoresSeleccionados('nombre');
+        var tapiceriaSeleccionada = obtenerValoresSeleccionados('material');
+        var colorSeleccionado = obtenerValoresSeleccionados('color');
+
+        // Filtrar los productos según los criterios seleccionados
+        var productosFiltrados = productos.filter(function(producto) {
+            // Verificar modelo
+            var cumpleModelo = modeloSeleccionado.length === 0 || modeloSeleccionado.includes(producto.nombre);
+            // Verificar tapiceria
+            var cumpleTapiceria = tapiceriaSeleccionada.length === 0 || tapiceriaSeleccionada.includes(producto.material);
+            // Verificar color
+            var cumpleColor = colorSeleccionado.length === 0 || colorSeleccionado.includes(producto.color);
+
+            // Determinar disponibilidad del producto basado en el stock
+            var disponibilidad = (producto.stock > 0) ? 'disponible' : 'hacer_pedido';
+
+            // Verificar disponibilidadSeleccionada si hay disponibilidad seleccionada
+            var cumpleDisponibilidad = disponibilidadSeleccionada.length === 0 || disponibilidadSeleccionada.includes(disponibilidad);
+
+            // El producto se muestra si cumple con al menos una de las condiciones en cada filtro
+            return cumpleDisponibilidad && cumpleModelo && cumpleTapiceria && cumpleColor;
+        });
+
+        // Mostrar solo los productos filtrados
+        mostrarProductos(productosFiltrados);
+    }
+
+    function obtenerValoresSeleccionados(nombreFiltro) {
+        var checkboxes = document.querySelectorAll('input[name="' + nombreFiltro + '"]:checked');
+        return Array.from(checkboxes).map(function (checkbox) {
+            return checkbox.value;
+        });
+    }
+
+    function mostrarProductos(productosMostrados) {
+        // Ocultar todas las tarjetas de productos
+        var tarjetasProductos = document.querySelectorAll('.tarjeta');
+        tarjetasProductos.forEach(function(tarjeta) {
+            tarjeta.style.display = 'none';
+        });
+
+        // Mostrar solo las tarjetas de productos filtrados
+        productosMostrados.forEach(function(producto) {
+            var tarjeta = document.getElementById('tarjeta-' + producto.id); // Suponiendo que cada tarjeta tiene un ID único
+            if (tarjeta) {
+                tarjeta.style.display = 'flex';
+            }
+        });
+    }
+
+    /*]]>*/
+</script>
+<script th:src="@{/js/users/carrito.js}"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ventas-Admin</title>
+
+    <link icon="icon" href="/imagenes/SlamRacingIcono.ico" rel="icon" />
+
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <link rel="stylesheet" th:href="@{/css/scrollbar.css}" />
+</head>
+<body>
+<main class="inline-flex w-screen">
+    <div th:insert="~{admin/templateAdmin.html::sidebar}" class="w-[17.57%]"></div>
+    <div class="flex flex-col relative w-[calc(100%-17.57%)] h-screen">
+        <header class="w-full h-[13%] flex justify-between items-center px-10 py-5">
+            <div class="h-fit">
+                <h1 class="font-poppins font-bold text-xl">Ventas</h1>
+                <p class="font-poppins font-medium text-sm text-grey" th:text="${fechaHoraActual}"></p>
+            </div>
+
+
+
+            <form class="flex w-[34.54%] h-fit px-4 py-3 bg-black rounded-lg text-white">
+                <svg class="mr-2"
+                     width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 20C15.9706 20 20 15.9706 20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M18.9299 20.6898C19.4599 22.2898 20.6699 22.4498 21.5999 21.0498C22.4499 19.7698 21.8899 18.7198 20.3499 18.7198C19.2099 18.7098 18.5699 19.5998 18.9299 20.6898Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                <input class="placeholder-white focus:outline-none text-base font-poppins font-medium bg-black w-full" type="text" name="buscar" placeholder="Buscar">
+            </form>
+
+
+
+        </header>
+
+        <div class="flex flex-col items-center justify-between w-full h-full bg-whiteLight">
+            <div class="flex flex-col gap-3 w-[95%] h-fit my-9 bg-white font-poppins border border-black border-solid rounded-xl p-5">
+                <h2 class="font-medium text-xl">Historial de ventas</h2>
+                <table class="text-xs">
+                    <thead>
+                    <tr class="h-14 border-b border-solid border-black">
+                        <th class="text-left w-20" scope="col">Id Venta</th>
+                        <th class="text-left w-20" scope="col">Id Pedido</th>
+                        <th class="text-left w-[9.375rem]" scope="col">Fecha</th>
+                        <th class="text-left w-32" scope="col">Tipo de pago</th>
+                        <th class="text-left w-32" scope="col">Medio de pago</th>
+                        <th class="text-left w-24" scope="col">Monto Bruto</th>
+                        <th class="text-left w-28" scope="col">Comisión MP</th>
+                        <th class="text-left w-24" scope="col">Monto Neto</th>
+                        <th class="text-left w-24" scope="col">Estado</th>
+                        <th class="" scope="col">Acción</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Iteracion de productos -->
+
+                    <tr th:each="ventas: ${ventas}"
+                        class="h-14 border-b border-solid border-black" th:id="${ventas.id}">
+                        <td th:text="'#'+${ventas.id}"></td>
+                        <td th:text="${ventas.pedido.id}"></td>
+                        <td th:text="${ventas.fecha}"></td>
+                        <td th:text="${ventas.tipo_pago}"></td>
+                        <td th:text="${ventas.medio_pago}"></td>
+                        <td th:text="${ventas.monto_recibido}"></td>
+                        <td th:text="${ventas.comision_mp}"></td>
+                        <td th:text="${ventas.montoNeto}"></td>
+                        <td th:text="${ventas.estado}"></td>
+                        <td>
+                            <div class="flex">
+                                <button class="editar-btn py-1 px-2 rounded-lg hover:bg-yellow">
+                                    <svg class="w-4 h-4"
+                                         xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                        <path d="M16.2141 4.98239L17.6158 3.58063C18.39 2.80646 19.6452 2.80646 20.4194 3.58063C21.1935 4.3548 21.1935 5.60998 20.4194 6.38415L19.0176 7.78591M16.2141 4.98239L10.9802 10.2163C9.93493 11.2616 9.41226 11.7842 9.05637 12.4211C8.70047 13.058 8.3424 14.5619 8 16C9.43809 15.6576 10.942 15.2995 11.5789 14.9436C12.2158 14.5877 12.7384 14.0651 13.7837 13.0198L19.0176 7.78591M16.2141 4.98239L19.0176 7.78591" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M21 12C21 16.2426 21 18.364 19.682 19.682C18.364 21 16.2426 21 12 21C7.75736 21 5.63604 21 4.31802 19.682C3 18.364 3 16.2426 3 12C3 7.75736 3 5.63604 4.31802 4.31802C5.63604 3 7.75736 3 12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                                <a th:href="@{/producto/eliminarVenta/{id} (id=${ventas.id}) }"
+                                   class="eliminar-btn py-1 px-2 ml-1 rounded-lg hover:bg-red hover:text-white">
+                                    <svg class="w-4 h-4"
+                                         xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                        <path d="M19.5 5.5L18.8803 15.5251C18.7219 18.0864 18.6428 19.3671 18.0008 20.2879C17.6833 20.7431 17.2747 21.1273 16.8007 21.416C15.8421 22 14.559 22 11.9927 22C9.42312 22 8.1383 22 7.17905 21.4149C6.7048 21.1257 6.296 20.7408 5.97868 20.2848C5.33688 19.3626 5.25945 18.0801 5.10461 15.5152L4.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                        <path d="M3 5.5H21M16.0557 5.5L15.3731 4.09173C14.9196 3.15626 14.6928 2.68852 14.3017 2.39681C14.215 2.3321 14.1231 2.27454 14.027 2.2247C13.5939 2 13.0741 2 12.0345 2C10.9688 2 10.436 2 9.99568 2.23412C9.8981 2.28601 9.80498 2.3459 9.71729 2.41317C9.32164 2.7167 9.10063 3.20155 8.65861 4.17126L8.05292 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                        <path d="M9.5 16.5L9.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                        <path d="M14.5 16.5L14.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <a id="openModalBtn" class="bg-black p-3 rounded-3xl mb-9 font-poppins font-medium text-base text-white">
+                <button class="flex">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 5V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5 12L19 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Registrar nueva venta
+                </button>
+            </a>
+        </div>
+
+
+
+        <div id="modalContainer" class="absolute w-full h-screen z-10 inset-0 hidden flex justify-center items-center font-poppins bg-whiteLight ">
+            <div class="rounded-xl border border-solid bg-white border-lightGray px-10 py-7">
+                <p class="text-base font-medium mb-12">Registro de producto nuevo</p>
+                <form th:action="@{/producto/agregarProducto}" method="post" enctype="multipart/form-data"
+                      class="flex flex-col gap-y-12 text-greyBlue w-full max-w-[59.375rem]">
+                    <div class="flex flex-wrap justify-between">
+                        <div class="flex flex-col w-[45%]">
+                            <label class="flex text-sm" for="nombre">
+                                Nombre del producto
+                                <svg class="mt-0.5 ml-0.5"
+                                     width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.02273 6.54545L3.10227 4.35795L1.25284 5.53125L0.775568 4.69602L2.72443 3.68182L0.775568 2.66761L1.25284 1.83239L3.10227 3.00568L3.02273 0.818182H3.97727L3.89773 3.00568L5.74716 1.83239L6.22443 2.66761L4.27557 3.68182L6.22443 4.69602L5.74716 5.53125L3.89773 4.35795L3.97727 6.54545H3.02273Z" fill="#D63928"/>
+                                </svg>
+                            </label>
+                            <input class="text-black focus:outline-none border border-solid border-lightGray100 rounded-md px-3 py-1"
+                                   id="nombre" name="nombre" type="text" required placeholder="Ej: SRF1 Leather" autocomplete="off">
+                        </div>
+                        <div class="flex flex-col w-[45%]">
+                            <label class="flex text-sm" for="precio_unitario">
+                                Precio del producto
+                                <svg class="mt-0.5 ml-0.5"
+                                     width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.02273 6.54545L3.10227 4.35795L1.25284 5.53125L0.775568 4.69602L2.72443 3.68182L0.775568 2.66761L1.25284 1.83239L3.10227 3.00568L3.02273 0.818182H3.97727L3.89773 3.00568L5.74716 1.83239L6.22443 2.66761L4.27557 3.68182L6.22443 4.69602L5.74716 5.53125L3.89773 4.35795L3.97727 6.54545H3.02273Z" fill="#D63928"/>
+                                </svg>
+                            </label>
+                            <div class="flex border border-solid border-lightGray100 rounded-md px-3 py-1">
+                                <p>S/.</p>
+                                <input class="text-black focus:outline-none w-full" id="precio_unitario" type="number"
+                                       name="precio_unitario" required autocomplete="off" placeholder="0.00">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <div class="flex flex-col w-full">
+                            <label class="text-sm" for="descripcion">
+                                Descripción del producto
+                            </label>
+                            <input class="text-black focus:outline-none border border-solid border-lightGray100 rounded-md px-3 py-1"
+                                   id="descripcion" name="descripcion" type="text" placeholder="Ej: Silla gamer de alta calidad" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap justify-between">
+                        <div class="flex flex-col w-[45%]">
+                            <label class="flex text-sm" for="stock">
+                                Stock disponible
+                                <svg class="mt-0.5 ml-0.5"
+                                     width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.02273 6.54545L3.10227 4.35795L1.25284 5.53125L0.775568 4.69602L2.72443 3.68182L0.775568 2.66761L1.25284 1.83239L3.10227 3.00568L3.02273 0.818182H3.97727L3.89773 3.00568L5.74716 1.83239L6.22443 2.66761L4.27557 3.68182L6.22443 4.69602L5.74716 5.53125L3.89773 4.35795L3.97727 6.54545H3.02273Z" fill="#D63928"/>
+                                </svg>
+                            </label>
+                            <input class="text-black focus:outline-none border border-solid border-lightGray100 rounded-md px-3 py-1"
+                                   id="stock" name="stock" type="number" placeholder="0" required autocomplete="off">
+                        </div>
+                        <div class="flex flex-col w-[45%]">
+                            <label class="text-sm" for="imagen_url">
+                                Imagen del producto
+                            </label>
+                            <div class="flex justify-center items-center border border-solid border-grey rounded-lg relative hover:bg-grey hover:text-white px-4 py-1 text-black text-sm">
+                                <svg class="mr-1.5"
+                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M13 2H13.2727C16.5339 2 18.1645 2 19.2969 2.79784C19.6214 3.02643 19.9094 3.29752 20.1523 3.60289C21 4.66867 21 6.20336 21 9.27273V11.8182C21 14.7814 21 16.2629 20.5311 17.4462C19.7772 19.3486 18.1829 20.8491 16.1616 21.5586C14.9044 22 13.3302 22 10.1818 22C8.38275 22 7.48322 22 6.76478 21.7478C5.60979 21.3424 4.69875 20.4849 4.26796 19.3979C4 18.7217 4 17.8751 4 16.1818V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M21 12C21 13.8409 19.5076 15.3333 17.6667 15.3333C17.0009 15.3333 16.216 15.2167 15.5686 15.3901C14.9935 15.5442 14.5442 15.9935 14.3901 16.5686C14.2167 17.216 14.3333 18.0009 14.3333 18.6667C14.3333 20.5076 12.8409 22 11 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11 6L3 6M7 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                <p id="nombre-archivo">Agregar imagen</p>
+                                <input id="imagen_url" name="imagen" type="file" accept="image/*" class="absolute opacity-0 w-full">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap justify-between">
+                        <button class="w-[20%] border border-solid text-black border-lightGray100 rounded-md px-3 py-1"
+                                id="cancelBtn">Cancelar</button>
+                        <button class="w-[75%] bg-black text-white border border-solid rounded-md px-3 py-1"
+                                id="" type="submit">Guardar</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+</main>
+<script th:src="@{/js/admins/ventas.js}"></script>
+</body>
+</html>

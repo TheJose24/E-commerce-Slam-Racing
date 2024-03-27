@@ -1,0 +1,10 @@
+/* Estilos para navegadores WebKit (Chrome, Safari) */
+/* Cambia el color de fondo de la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 0;
+    /* Ancho de la barra de desplazamiento */
+}
+
+.tarjeta:hover .boton-comprar {
+    opacity: 1;
+}

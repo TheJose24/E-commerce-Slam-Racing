@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Slam Racing</title>
+    <link icon="icon" href="/imagenes/SlamRacingIcono.ico" rel="icon"/>
+    <link rel="stylesheet" th:href="@{./css/styles.css}" />
+</head>
+<body>
+<!-- incluir el header-->
+<div th:insert="~{user/templateUser.html::header}"></div>
+
+    <main class="max-w-4xl w-full mx-auto my-0 text-center bg-amber-600 text-2xl">
+        <h1>Bienvenido a Slam Racing</h1>
+        <div id="productos" class="contenedor-tarjeta-producto flex text-left p-5 border-0 border-solid border-b-black rounded-lg shadow-[0_0_10px_rgba(0, 0, 0, 0.1)] bg-white mt-5">
+            <!-- Aquí se agregarán dinámicamente los productos -->
+        </div>
+
+        <div th:each="producto: ${productos}">
+            <p th:text="${producto.nombre}"></p>
+            <p th:text="${producto.descripcion}"></p>
+            <p th:text="${producto.precio_unitario}"></p>
+        </div>
+
+        <a href="/pagar">
+            <button>
+                Ir a pagar
+            </button>
+        </a>
+    </main>
+
+<script src="/js/admins/productos.js"></script>
+</body>
+</html>
